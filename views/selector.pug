@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to NWMSU #{title} 
+  <br>
+    - var image_names = ["A", "B", "C", "D", "E"]
+  - for(let i = 0; i < 3; i++) {
+    - let number = Math.floor(Math.random() * 5)
+        img(src=`/images/${image_names[number]}.jpg`, alt="different images every time", height="300px", width="300px")
+  - }
