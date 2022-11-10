@@ -3,7 +3,9 @@ extends layout
 block content
   h1= title
   p Welcome to #{title} 
-  - var result = [{"Library_style":"Triangle","Library_type":"Glass","Library_size":6},{"Library_style":"Circle","Library_type":"Iron","Library_size":12},{"Library_style":"Square","Library_type":"Fiber","Library_size":19}]
+  - var result = [{"Library_style":"Triangle","Library_type":"Glass","Library_size":6},
+  {"Library_style":"Circle","Library_type":"Iron","Library_size":12},
+  {"Library_style":"Square","Library_type":"Fiber","Library_size":19}]
   div.container-fluid
      div.row
         each item,index in result
