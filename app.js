@@ -35,9 +35,9 @@ async function recreateDB(){
   // Delete everything 
   await Library.deleteMany(); 
  
-  let instance1 = new Library({ Library_style: "Triangle", Library_type: 'large', Library_s: 25.4 });
-  let instance2 = new Library({ Library_style: "Circle", Library_type: 'medium', Library_s: 32.2 });
-  let instance3 = new Library({ Library_style: "Square", Library_type: 'small', Library_s: 12.3 });
+  let instance1 = new Library({ Library_style: "Triangle", Library_type: 'large', Library_size: 25.4 });
+  let instance2 = new Library({ Library_style: "Circle", Library_type: 'medium', Library_size: 32.2 });
+  let instance3 = new Library({ Library_style: "Square", Library_type: 'small', Library_size: 12.3 });
 
   instance1.save( function(err,doc) { 
     if(err) return console.error(err); 
