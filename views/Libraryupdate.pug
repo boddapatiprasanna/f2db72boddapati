@@ -1,0 +1,46 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let Libraryid = toShow._id 
+  - let Library_style = toShow.Library_style 
+  - let Library_type = toShow.Library_type
+  - let Library_size = toShow.Library_size
+   
+  div.row(class='mb-2') 
+    div.mr-1 ID is 
+    div #{Libraryid} 
+  - let actionid = "/resource/Librarys/" + Libraryid 
+  form(id='LibraryForm', action=actionid, method="PUT") 
+    div.form-group 
+        label.LibraryAttr(for='Library_style') Library style 
+        input#Library_type(type='style', name='Library_style') 
+    div.form-group 
+        label.LibraryAttr(for='Library_type') Library type
+        input#size(type='type', name='Library_type') 
+    div.form-group 
+        label.LibraryAttr(for='Library_size') Library size  
+        input#cost(type='size', name='Library_size') 
+    input(type="submit") 
+ 
+ 
+  script. 
+    document.forms['LibraryForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'PUT', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        var abc = resp.text();
+        alert(abc);
+        return abc; // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Update succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Update failed " + error ) 
+      }); 
+    }); 

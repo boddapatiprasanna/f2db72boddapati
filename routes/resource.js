@@ -18,3 +18,6 @@ router.get('/Librarys/:id', Library_controller.Library_detail);
 // GET request for list of all Film items.
 router.get('/Librarys', Library_controller.Library_list);
 module.exports = router;
+//GET detail costume page */ 
+//router.get('/detail', costume_controlers.costume_view_one_Page); 
+ 

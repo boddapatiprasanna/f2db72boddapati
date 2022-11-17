@@ -1,0 +1,54 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  if (toShow == null) 
+    h2 No instance to delete 
+  else 
+    - let Libraryid = toShow._id 
+    - let Library_style= toShow.Library_style
+    - let Library_type = toShow.Library_type 
+    - let Library_size = toShow.Library_size 
+    - let actionid = "/resource/Librarys/" + Libraryid 
+    script let actionid = "#{actionid}" 
+    div 
+      div.row 
+        div(class='LibraryAttr mr-3') Library ID is: 
+        div #{Libraryid} 
+      div.row 
+        div(class='LibraryAttr mr-3') Library Library_style is: 
+        div #{Library_style} 
+      div.row 
+        div(class='LibraryAttr mr-3') Library Library_type is: 
+        div #{Library_type} 
+      div.row 
+        div(class='LibraryAttr mr-3') Library Library_size is: 
+        div #{Library_size} 
+ 
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
+ 
+  script. 
+    function cancel() { 
+      // Go back to the home page for the Library collection 
+      window.location.href='/Librarys' 
+    } 
+  script. 
+    function deleteOnid() { 
+      console.log("starting delete") 
+      // delete first 
+      fetch(actionid, { 
+        method: 'DELETE'      //Dont need a body for the delete 
+      }).then((resp) => { 
+        return resp.text(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Delete succeded") 
+        window.location.href='/Librarys' 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Delete failed " + error ) 
+      }); 
+    } 
+    

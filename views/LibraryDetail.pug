@@ -1,0 +1,22 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let Libraryid = toShow._id 
+  - let Library_style = toShow.Library_style 
+  - let Library_type = toShow.Library_type 
+  - let Library_size = toShow.Library_size 
+  div 
+    div.row 
+      div(class='LibraryAttr mr-3') Library ID is: 
+      div #{Libraryid} 
+    div.row 
+      div(class='LibraryAttr mr-3') Library Type is: 
+      div #{Library_style} 
+    div.row 
+      div(class='LibraryAttr mr-3') Library Size is: 
+      div #{Library_size} 
+    div.row 
+      div(class='LibraryAttr mr-3') Library Cost is: 
+      div #{Library_type} 
