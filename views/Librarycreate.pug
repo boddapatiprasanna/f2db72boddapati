@@ -2,17 +2,21 @@ extends layout
  
 block content 
   h1= title 
- 
+  div(class='container', style='border: 2px solid #4352FF; width: 300px;')	
+    h1(style="text-align: center; color: #FF1E1E")= title 	
+    br	
+    div(class='container' style="text-align: center; width: 300px;")
+  
   form(id='LibraryForm', action="/resource/Librarys", method="POST") 
     div.form-group 
         label.LibraryAttr(for='Library_style') Library style 
-        input#Library_type(type='style', name='Library_style') 
+        input#Library_style(type='style', name='Library_style') 
     div.form-group 
         label.LibraryAttr(for='Library_type') Library type
-        input#size(type='type', name='Library_type') 
+        input#Library_type(type='type', name='Library_type') 
     div.form-group 
         label.LibraryAttr(for='Library_size') Library size  
-        input#cost(type='size', name='Library_size') 
+        input#Library_size(type='size', name='Library_size') 
     input(type="submit") 
  
   script. 

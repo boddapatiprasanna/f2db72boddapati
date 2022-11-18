@@ -15,13 +15,13 @@ block content
   form(id='LibraryForm', action=actionid, method="PUT") 
     div.form-group 
         label.LibraryAttr(for='Library_style') Library style 
-        input#Library_type(type='style', name='Library_style') 
+        input#Library_style(type='style', name='Library_style', value=Library_style) 
     div.form-group 
         label.LibraryAttr(for='Library_type') Library type
-        input#size(type='type', name='Library_type') 
+        input#Library_type(type='type', name='Library_type', value=Library_type) 
     div.form-group 
         label.LibraryAttr(for='Library_size') Library size  
-        input#cost(type='size', name='Library_size') 
+        input#Library_size(type='size', name='Library_size' value=Library_size) 
     input(type="submit") 
  
  

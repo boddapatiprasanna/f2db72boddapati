@@ -1,38 +1,41 @@
 extends layout 
  
 block content 
-  h1= title 
- 
-  if (toShow == null) 
-    h2 No instance to delete 
-  else 
-    - let Libraryid = toShow._id 
-    - let Library_style= toShow.Library_style
-    - let Library_type = toShow.Library_type 
-    - let Library_size = toShow.Library_size 
-    - let actionid = "/resource/Librarys/" + Libraryid 
-    script let actionid = "#{actionid}" 
-    div 
-      div.row 
-        div(class='LibraryAttr mr-3') Library ID is: 
-        div #{Libraryid} 
-      div.row 
-        div(class='LibraryAttr mr-3') Library Library_style is: 
-        div #{Library_style} 
-      div.row 
-        div(class='LibraryAttr mr-3') Library Library_type is: 
-        div #{Library_type} 
-      div.row 
-        div(class='LibraryAttr mr-3') Library Library_size is: 
-        div #{Library_size} 
- 
-    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
-    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
+  div(class="container", style='border: 2px solid #001253; width: 450px;')
+    h1(style="text-align: center; color: #432C7A")= title 
+    br
+
+    if (toShow == null) 
+        h2 No instance to delete 
+    else 
+        - let LibraryId = toShow._id 
+        - let Library_style = toShow.Library_style
+        - let Library_type = toShow.Library_type 
+        - let Library_size = toShow.Library_size 
+        - let actionid = "/resource/Library/" + LibraryId
+        script let actionid = "#{actionid}" 
+        div
+        
+            div(class='row mb-3') 
+                div(class='LibraryAttr col-4') Library Id
+                div(class='data col-6') #{LibraryId} 
+            div(class='row mb-3') 
+                div(class='LibraryAttr col-4') Library_style 
+                div(class='data col-6') #{Library_style} 
+            div(class='row mb-3') 
+                div(class='LibraryAttr col-4') Library_type
+                div(class='data col-6') #{Library_type} 
+            div(class='row mb-3') 
+                div(class='LibraryAttr col-4') Library_size
+                div(class='data col-6') #{Library_size} 
+
+            button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
+            button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
  
   script. 
     function cancel() { 
       // Go back to the home page for the Library collection 
-      window.location.href='/Librarys' 
+      Library.location.href='/Library' 
     } 
   script. 
     function deleteOnid() { 
@@ -44,11 +47,10 @@ block content
         return resp.text(); // or resp.text() or whatever the server sends 
       }).then((body) => { 
         alert("Delete succeded") 
-        window.location.href='/Librarys' 
+        Library.location.href='/Library' 
         // TODO handle body 
       }).catch((error) => { 
         // TODO handle error 
         alert("Delete failed " + error ) 
       }); 
     } 
-    

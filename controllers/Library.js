@@ -1,8 +1,8 @@
 var Library = require('../models/Library');
 // List of all Library
-exports.Library_list = function(req, res) {
- res.send('NOT IMPLEMENTED: Library list');
-};
+//exports.Library_list = function(req, res) {
+ //res.send('NOT IMPLEMENTED: Library list');
+//};
 
 
 // List of all Librarys 
@@ -58,10 +58,6 @@ exports.Library_create_post = async function(req, res) {
     }   
 };
 
-// Handle Library delete form on DELETE. 
-exports.Library_delete = function(req, res) { 
-    res.send('NOT IMPLEMENTED: Library delete DELETE ' + req.params.id); 
-}; 
 
 // Handle Library delete on DELETE. 
 exports.Library_delete = async function(req, res) { 
@@ -76,17 +72,6 @@ exports.Library_delete = async function(req, res) {
     } 
 }; 
 
-// List of all Library 
-exports.Library_delete = async function(req, res) { 
-    try{ 
-        theLibrary = await Library.find(); 
-        res.send(theLibrary); 
-    } 
-    catch(err){ 
-        res.status(500); 
-        res.send(`{"error": ${err}}`); 
-    }   
-};
 
 // Handle Library update form on PUT. 
 // exports Library_update_put = function(req, res) { 
@@ -185,7 +170,7 @@ exports.Library_view_one_Page = async function(req, res) {
 exports.Library_view_all_Page = async function(req, res) { 
     try{ 
         theLibrarys = await Library.find(); 
-        res.render( 'Librarys', { title:  'Library Search Results', results: theLibrarys }); 
+        res.render( 'Library', { title:  'Library Search Results', results: theLibrarys }); 
     } 
     catch(err){ 
         res.status(500); 

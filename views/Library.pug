@@ -3,12 +3,21 @@ extends layout
 block content
   h1= title
   p Welcome to #{title} 
-  - var result = [{"Library_style":"Triangle","Library_type":"Glass","Library_size":6},{"Library_style":"Circle","Library_type":"Iron","Library_size":12},{"Library_style":"Square","Library_type":"Fiber","Library_size":19}]
-  div.container-fluid
-     div.row
-        each item,index in result
-            div.col-sm-2(onclick=`buy(${index})`) Library style: #{item["Library_style"]}  <br>  Library type: #{item["Library_type"]} <br> Library size: #{item["Library_size"]} 
+
+  div(class="container-fluid")
+     div(class="row m-1")
+        each item,index in results
+            - let destination = `dispatch(\"/Library/update?id=${item._id}\")`
+            div.col-sm-2(onclick=`buy(${index})`) Library style: #{item["Library_style"]}  <br>  Library type: #{item["Library_type"]} <br> Library size: #{item["Library_size"]}
+            button.btn( class="btn-primary ml-1", onclick= destination) Update 
+
+   
   script.
-      function buy(index){
-         alert("you purchased item "+(index+1))
-      }
+    function buy(index){
+      alert("you purchased item "+(index+1))
+    }
+
+  script. 
+    function dispatch(path){ 
+      window.location.href=path 
+    } 
